@@ -65,4 +65,14 @@ final class JsonAssert
         $actual = JmesPath::search($expression, $data);
         Assert::assertEquals($expected, $actual);
     }
+
+    public static function assertJsonValueEqualsCanonicalizing($expected, $expression, $data): void
+    {
+        if (is_string($data)) {
+            $data = json_decode($data);
+        }
+
+        $actual = JmesPath::search($expression, $data);
+        Assert::assertEqualsCanonicalizing($expected, $actual);
+    }
 }

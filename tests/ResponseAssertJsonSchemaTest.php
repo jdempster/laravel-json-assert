@@ -68,4 +68,21 @@ class ResponseAssertJsonSchemaTest extends TestCase
         $this->get('/foo')->assertJsonValueEquals(1, 'foo[0].baz');
     }
 
+    public function testAssertJsonValueEqualsCanonicalizing(): void
+    {
+        Route::get('/foo', static function () {
+            return [
+                'foo' => [
+                    ['baz' => 1],
+                    ['baz' => 2],
+                    ['baz' => 3],
+                ],
+            ];
+        });
+
+        $this->get('/foo')->assertJsonValueEqualsCanonicalizing(
+            [2, 3, 1],
+            'foo[*].baz'
+        );
+    }
 }
