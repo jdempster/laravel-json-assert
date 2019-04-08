@@ -21,6 +21,11 @@ class ServiceProvider extends Provider
             JsonAssert::assertJsonMatchesSchema($this->content(), $schema);
             return $this;
         });
+
+        TestResponse::macro('assertJsonValueEquals', function ($expected, $expression) {
+            JsonAssert::assertJsonValueEquals($expected, $expression, $this->content());
+            return $this;
+        });
     }
 
     public function register(): void
