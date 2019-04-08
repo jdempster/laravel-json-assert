@@ -1,0 +1,9 @@
+{
+    "type": "object",
+    "properties": {
+        "email": {
+            "$ref": "/email.json"
+        }
+    },
+    "required": ["email"]
+}
