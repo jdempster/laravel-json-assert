@@ -65,7 +65,7 @@ class ResponseAssertJsonSchemaTest extends TestCase
             ];
         });
 
-        $this->get('/foo')->assertJsonValueEquals(1, 'foo[0].baz');
+        $this->get('/foo')->assertJsonValueEquals(1, 'foo.0.baz');
     }
 
     public function testAssertJsonValueEqualsCanonicalizing(): void
@@ -82,7 +82,7 @@ class ResponseAssertJsonSchemaTest extends TestCase
 
         $this->get('/foo')->assertJsonValueEqualsCanonicalizing(
             [2, 3, 1],
-            'foo[*].baz'
+            'foo.*.baz'
         );
     }
 }

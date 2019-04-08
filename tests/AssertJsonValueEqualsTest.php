@@ -59,13 +59,13 @@ class AssertJsonValueEqualsTest extends TestCase
 
         JsonAssert::assertJsonValueEqualsCanonicalizing(
             [2, 3, 1],
-            'foo[*].baz',
+            'foo.*.baz',
             $data
         );
 
         JsonAssert::assertJsonValueEqualsCanonicalizing(
             [3, 2, 1],
-            'foo[*].baz',
+            'foo.*.baz',
             $data
         );
     }
@@ -83,7 +83,7 @@ class AssertJsonValueEqualsTest extends TestCase
 
         JsonAssert::assertJsonValueEqualsCanonicalizing(
             [2, 3, 1, 4],
-            'foo[*].baz',
+            'foo.*.baz',
             $data
         );
     }

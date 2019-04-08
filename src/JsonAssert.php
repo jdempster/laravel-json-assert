@@ -4,7 +4,6 @@ namespace Jdempster\JsonAssert;
 
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Str;
-use JmesPath\Env as JmesPath;
 use Opis\JsonSchema\Schema;
 use Opis\JsonSchema\Validator;
 use PHPUnit\Framework\Assert;
@@ -62,7 +61,7 @@ final class JsonAssert
             $data = json_decode($data);
         }
 
-        $actual = JmesPath::search($expression, $data);
+        $actual = data_get($data, $expression);
         Assert::assertEquals($expected, $actual);
     }
 
@@ -72,7 +71,7 @@ final class JsonAssert
             $data = json_decode($data);
         }
 
-        $actual = JmesPath::search($expression, $data);
+        $actual = data_get($data, $expression);
         Assert::assertEqualsCanonicalizing($expected, $actual);
     }
 }
